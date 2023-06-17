@@ -112,16 +112,6 @@ body:has(.section-header .drawer-menu) .announcement-bar-section slideshow-compo
   margin: 0 auto;
 }
 
-/* product page variant boc css */
-.custom_select_box{
-  width: 100%;
-  padding: 14px;
-}
-.custom_select_box:focus-visible{
-  outline: none;
-  box-shadow: none;
-}
-
 @media screen and (min-width: 750px) {
   .page-width {
     padding: 0 5rem;

@@ -7,32 +7,6 @@ class CartRemoveButton extends HTMLElement {
       const cartItems = this.closest('cart-items') || this.closest('cart-drawer-items');
       cartItems.updateQuantity(this.dataset.index, 0);
 
-      // remove gift iten product on specific product remove
-
-      let data_id = this.getAttribute('data_id');
-      if(data_id == '45538141176126'){
-        let formData = {
-          updates:{
-            "45520001564990":0,
-            "45538141176126":0,
-         }
-        }
-        fetch(window.Shopify.routes.root + 'cart/update.js', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        })
-        .then(response => {
-           return response.json();
-         })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
-        
-      }
-
     });
   }
 }

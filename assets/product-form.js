@@ -43,34 +43,6 @@ if (!customElements.get('product-form')) {
         fetch(`${routes.cart_add_url}`, config)
           .then((response) => response.json())
           .then((response) => {
-            if(response.id == '45538141176126'){
-              let formData = {
-                'items': [{
-                 'id': 45520001564990,
-                 'quantity': 1
-                 }]
-               };
-               fetch(window.Shopify.routes.root + 'cart/add.js', {
-                 method: 'POST',
-                 headers: {
-                   'Content-Type': 'application/json'
-                 },
-                 body: JSON.stringify(formData)
-               })
-               .then(response => {
-                  fetch(window.Shopify.routes.root + 'cart.js')
-                  .then(response => response.json())
-                  .then(cart => {
-                    setTimeout(function(){
-                      let cartCount = document.querySelectorAll('.cart_counter')[0];
-                      cartCount.innerHTML = cart.item_count
-                    }, 1000)
-                  });
-                })
-               .catch((error) => {
-                 console.error('Error:', error);
-               });
-            }
             if (response.status) {
               publish(PUB_SUB_EVENTS.cartError, {
                 source: 'product-form',

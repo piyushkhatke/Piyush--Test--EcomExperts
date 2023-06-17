@@ -309,17 +309,6 @@
 
             {%- when 'variant_picker' -%}
               {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
-
-              <select id="custom_select_box" class="custom_select_box">
-                <option value="unselected">Unselected</option>
-                {% for option in product.options_with_values %}
-                  {% for value in option.values %}
-                    {% if option.name == "Size" or option.name == "size" or option.name == "SIZE" %}
-                      <option value="{{value}}">{{value}}</option>
-                    {% endif %}
-                  {% endfor %}
-                {% endfor %}
-              </select>
             {%- when 'buy_buttons' -%}
               {%- render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true -%}
             {%- when 'rating' -%}
@@ -524,23 +513,6 @@
         hiddenInput.value = event.currentTarget.value;
       });
     });
-
-    window.addEventListener('load', function() {
-      document.querySelector('.product-form__submit').disabled = 'disabled';
-    })
-    
-    document.getElementById("custom_select_box").addEventListener("click", function() {
-      let optionName = this.value;
-      document.querySelectorAll(".size_hide input").forEach(function(e) {
-        e.removeAttribute('checked');
-      })
-      if(optionName == 'unselected'){
-        document.querySelector('.product-form__submit').disabled = 'disabled';
-      }else{
-        document.querySelector('.product-form__submit').disabled = false;
-        document.querySelector(`input[value="${optionName}"]`).click();
-      }
-    })
 
   </script>
 
